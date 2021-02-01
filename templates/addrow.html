@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adding row to Table</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styling.css') }}"></head>
+<body>
+<style>
+.content {
+  max-width: 500px;
+  margin: auto;
+}
+</style>
+<h1>Adding row to Table</h1>
+<div class="content">
+<table id="table1" class="paleBlueRows" border="2">
+    <thead>
+      <tr>
+         <th>Columns of Table</th>
+      </tr>
+    </thead>
+   <tbody>
+
+        {% for row in data %}
+            <tr>
+      <td> {{ row[0] }}</td>
+        {% endfor %}
+    </tr>
+    </tbody>
+</table>
+<br/>
+<div>
+ <form   method="post" class="label-maker">
+<label for="quer">Write your query here:</label>
+ <br/>
+<textarea name="quer" id="quer">
+</textarea>
+  <div>
+  <input type="submit" name="addcolform" class="myButton">
+  </div>
+</form>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styling.css') }}"></head>
+<style>
+.content {
+  max-width: 500px;
+  margin: auto;
+}
+</style>
+<body>
+<h1>Displaying data for {{ table }}</h1>
+<div class="content">
+<table id="table1" class="paleBlueRows" border="2">
+    <thead>
+      <tr>
+          {%   for col in data %}
+
+         <th>{{ col[0] }}</th>
+          {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+ {% for row in rows %}
+
+        <tr>
+        {% for r in range(0,nbc) %}
+       <td> {{ row[r] }}</td>
+            {% endfor %}
+       <input id="delete" type="hidden" name="tb_name" value="{{ row[0] }}" />
+            <td><button type="submit" name="delete" class="myButton" value="{{ row[0] }}"
+                             onclick="window.location='/droprow/{{ table }}/{{ row[0] }}';">Delete</button>
+            </td>
+
+      </tr>
+    {% endfor %}
+
+
+   </tbody>
+</table>
+
+
+</div>
+</body>
+</html>

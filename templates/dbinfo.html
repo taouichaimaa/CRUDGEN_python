@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <link rel="stylesheet" href="{{ url_for('static', filename='styling.css') }}">
+
+</head>
+<body>
+<style>
+.content {
+  max-width: 500px;
+  margin: auto;
+}
+</style>
+<div class="content">
+<table id="table1" class="paleBlueRows" >
+    <thead>
+      <tr>
+         <th>Tables</th>
+          <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for row in data %}
+
+        <tr>
+       <td> {{ row[0] }}</td>
+       <input id="delete" type="hidden" name="tb_name" value="{{ row[0] }}" />
+            <td><button type="submit" name="delete" value="{{ row[0] }}"
+                             onclick="window.location='/drop/{{ row[0] }}';" class="myButton">Delete</button>
+            </td>
+            <input id="details" type="hidden" name="tb_name" value="{{ row[0] }}" />
+            <td><button type="submit" name="details" value="{{ row[0] }}"
+                            onclick="window.location='/data/{{ row[0] }}';" class="myButton">Details</button>
+            </td>
+           <input id="addrow" type="hidden" name="tb_name" value="{{ row[0] }}" />
+            <td><button type="submit" name="addrow" value="{{ row[0] }}"
+                            onclick="window.location='/addrow/{{ row[0] }}';" class="myButton">Add Row</button>
+            </td>
+           <input id="addcol" type="hidden" name="tb_name" value="{{ row[0] }}" />
+            <td><button type="submit" name="addcol" value="{{ row[0] }}"
+                             onclick="window.location='/addcol/{{ row[0] }}';" class="myButton">Add Column</button></td>
+      </tr>
+    {% endfor %}
+   </tbody>
+</table>
+</div>
+</body>
+</html>
+
